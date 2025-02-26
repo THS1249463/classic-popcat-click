@@ -3,12 +3,85 @@
 <html lang="zh-tw">
 <head>
   <title>POPCAT CLASSIC</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      align-items: center;
+      background-color: #000000;
+    }
+
+    .title {
+      width: 50%;
+      margin-top: 2em;
+    }
+
+    .cat-img{
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 80px;
+      -webkit-text-stroke: 3px black;
+      user-select: none;
+      flex: 1;
+    }
+
+    #p{
+      background-image: url('images/p.png');
+      background-position: bottom;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #op{
+      background-image: url('images/op.png');
+      background-position: bottom;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    body{
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    button{
+      font-family: sans-serif;
+      background-color: red;
+      border-color: cadetblue;
+      border-style: groove;
+    }
+
+  </style>
 </head>
 
 <body>
 
-<img src="images/popcat.svg" alt="POPCAT">
-<div class="cat-img" id="p"><h1>Let's POPCAT !!!!</h1></div>
+<div class = "container">
+  <img class = "title" src="images/popcat.svg" alt="POPCAT">
+  <div class="cat-img" id="p">The popcat !</div>
+
+  <button><a href = "https://cjdgrevival.com/" target="_blank">Taiko web !!!</a></button>
+</div>
+<script>
+  let popcount = 0;
+  const cat = document.getElementById('p');
+  cat.textContent = popcount;
+  const popsound = new Audio('pops/pop1.mp3');
+
+  document.addEventListener('mousedown', function() {
+    popcount++;
+    cat.textContent = popcount;
+    cat.id = 'op';
+    popsound.play();
+  });
+
+  document.addEventListener('mouseup', function() {
+    cat.id = 'p';
+  });
+
+</script>
 
 </body>
 </html>
